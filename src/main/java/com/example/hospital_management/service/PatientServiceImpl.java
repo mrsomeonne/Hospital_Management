@@ -1,9 +1,8 @@
 package com.example.hospital_management.service;
 
 import com.example.hospital_management.dao.PatientDetailDao;
-import com.example.hospital_management.model.PatientDetail;
+import com.example.hospital_management.model.PatientDetails;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -19,33 +18,33 @@ public class PatientServiceImpl implements PatientService{
     }
 
     @Override
-    public List<PatientDetail> getPatientDetails() {
+    public List<PatientDetails> getPatientDetails() {
 
         return patientDetailDao.findAll();
     }
 
     @Override
-    public void addPatientDetail(PatientDetail patientDetail) {
-        patientDetailDao.save(patientDetail);
+    public void addPatientDetail(PatientDetails patientDetails) {
+        patientDetailDao.save(patientDetails);
     }
 
     @Override
-    public PatientDetail getPatientDetailById(Long id) {
+    public PatientDetails getPatientDetailById(Long id) {
         return null;
     }
 
     @Override
-    public List<PatientDetail> getPatientDetailByName(String name) {
+    public List<PatientDetails> getPatientDetailByName(String name) {
         return List.of();
     }
 
     @Override
-    public void updatePatientDetail(PatientDetail patientDetail) {
+    public void updatePatientDetail(PatientDetails patientDetails) {
 
     }
 
     @Override
-    public void deletePatientDetails(PatientDetail patientDetail) {
+    public void deletePatientDetails(PatientDetails patientDetails) {
 
     }
 }

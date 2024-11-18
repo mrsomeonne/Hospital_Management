@@ -1,23 +1,23 @@
 package com.example.hospital_management.service;
 
-import com.example.hospital_management.model.PatientDetail;
+import com.example.hospital_management.model.PatientDetails;
 
 import java.util.List;
 
 
 public interface PatientService{
 
-    List<PatientDetail> getPatientDetails();
+    List<PatientDetails> getPatientDetails();
 
-    void addPatientDetail (PatientDetail patientDetail);
+    void addPatientDetail (PatientDetails patientDetails);
 
-    PatientDetail getPatientDetailById(Long id);
+    PatientDetails getPatientDetailById(Long id);
 
-    List<PatientDetail> getPatientDetailByName(String name);
+    List<PatientDetails> getPatientDetailByName(String name);
 
-    void updatePatientDetail(PatientDetail patientDetail);
+    void updatePatientDetail(PatientDetails patientDetails);
 
-    void deletePatientDetails(PatientDetail patientDetail);
+    void deletePatientDetails(PatientDetails patientDetails);
 
 
 }

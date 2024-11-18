@@ -1,6 +1,6 @@
 package com.example.hospital_management.controller;
 
-import com.example.hospital_management.model.PatientDetail;
+import com.example.hospital_management.model.PatientDetails;
 import com.example.hospital_management.service.PatientServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,14 +18,14 @@ public class PatientController {
     private final PatientServiceImpl patientService;
 
     @GetMapping("hospital/patient/get")
-    public List<PatientDetail> getPatientDetails(){
+    public List<PatientDetails> getPatientDetails(){
         return patientService.getPatientDetails();
     }
 
     @PostMapping("hospital/patient/add")
-    public ResponseEntity<String> savePatient(@RequestBody PatientDetail patientDetail){
-        patientService.addPatientDetail(patientDetail);
-        System.out.println(patientDetail);
+    public ResponseEntity<String> savePatient(@RequestBody PatientDetails patientDetails){
+        patientService.addPatientDetail(patientDetails);
+        System.out.println(patientDetails);
        return new ResponseEntity<>("Patient Added Successfully!", HttpStatus.OK);
     }
 }

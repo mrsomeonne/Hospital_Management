@@ -13,7 +13,7 @@ public class DoctorDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long doctorId;
     private String firstName;
     private String lastName;
     private String email;
@@ -21,6 +21,7 @@ public class DoctorDetails {
     private String qualification;
     private String specialization;
 //    private Department department;
+
 
 
 }

@@ -6,20 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
-
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
-public class PatientDetail {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String gender;
-    private Date dateOfBirth;
-//    private Address address;
+    private Long addressId;
+    private String state;
+    private String city;
+    private Integer zipCode;
+
+    //Using lombok annotation for the Constructors, getter/setters and ToString
+
 }
