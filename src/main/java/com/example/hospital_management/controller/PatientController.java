@@ -18,14 +18,23 @@ public class PatientController {
     private final PatientServiceImpl patientService;
 
     @GetMapping("hospital/patient/get")
-    public List<PatientDetails> getPatientDetails(){
-        return patientService.getPatientDetails();
+    public ResponseEntity<List<PatientDetails>> getPatientDetails(){
+        List<PatientDetails> patientDetails = patientService.getPatientDetails();
+        if (patientDetails.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(patientDetails);
+
     }
 
     @PostMapping("hospital/patient/add")
     public ResponseEntity<String> savePatient(@RequestBody PatientDetails patientDetails){
-        patientService.addPatientDetail(patientDetails);
-        System.out.println(patientDetails);
-       return new ResponseEntity<>("Patient Added Successfully!", HttpStatus.OK);
+        try {
+            patientService.addPatientDetail(patientDetails);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Patient Details Added Successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed To Add Details. Check Input And Try Again!");
+        }
     }
 }
