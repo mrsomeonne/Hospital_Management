@@ -1,9 +1,8 @@
 package com.example.hospital_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -20,7 +19,11 @@ public class DoctorDetails {
     private String phoneNumber;
     private String qualification;
     private String specialization;
-//    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "departmentId")
+    @JsonBackReference
+    private Department department;
 
 
 
