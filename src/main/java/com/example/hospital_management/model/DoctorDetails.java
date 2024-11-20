@@ -15,18 +15,12 @@ public class DoctorDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long doctorId;
-    @NotNull
     private String firstName;
-    @NotNull
     private String lastName;
     @Email
-    @NotNull
     private String email;
-    @NotNull
     private String phoneNumber;
-    @NotNull
     private String qualification;
-    @NotNull
     private String specialization;
 
     @ManyToOne

@@ -1,8 +1,8 @@
 package com.example.hospital_management.controller;
 
 import com.example.hospital_management.model.PatientDetails;
+import com.example.hospital_management.service.PatientService;
 import com.example.hospital_management.service.PatientServiceImpl;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class PatientController {
 
-//    private PatientDetail patientDetail;
+    private final PatientService patientService;
+    
 
-    private final PatientServiceImpl patientService;
+    public PatientController(PatientServiceImpl patientService) {
+		super();
+		this.patientService = patientService;
+	}
 
-    @GetMapping("hospital/patient/get")
+	@GetMapping("hospital/patient/get")
     public ResponseEntity<List<PatientDetails>> getPatientDetails(){
         List<PatientDetails> patientDetails = patientService.getPatientDetails();
         if (patientDetails.isEmpty()){
