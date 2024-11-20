@@ -29,8 +29,8 @@ public class Appointment implements Serializable {
     @JoinColumn(name = "doctorId", nullable = false)
     private DoctorDetails doctorDetails;
 
-    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
-    private MedicalReport medicalReport;
+//    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
+//    private MedicalReport medicalReport;
 
 
 
