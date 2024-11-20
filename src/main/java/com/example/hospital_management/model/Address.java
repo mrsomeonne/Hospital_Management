@@ -7,10 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
-public class Address {
+public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +20,5 @@ public class Address {
     private String state;
     private String city;
     private Integer zipCode;
-
-    //Using lombok annotation for the Constructors, getter/setters and ToString
 
 }

@@ -1,19 +1,20 @@
 package com.example.hospital_management.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
-public class DoctorDetails {
+public class DoctorDetails implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long doctorId;
     private String firstName;
     private String lastName;
@@ -24,10 +25,12 @@ public class DoctorDetails {
     private String specialization;
 
     @ManyToOne
-    @JoinColumn(name = "departmentId")
+    @JoinColumn(name = "departmentId", nullable = false)
     @JsonBackReference
     private Department department;
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctorDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Appointment> appointments;
 
 }

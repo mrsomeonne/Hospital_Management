@@ -1,8 +1,9 @@
-package com.example.hospital_management.service;
+package com.example.hospital_management.serviceImpl;
 
 
 import com.example.hospital_management.dao.DepartmentDao;
 import com.example.hospital_management.model.Department;
+import com.example.hospital_management.service.DepartmentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

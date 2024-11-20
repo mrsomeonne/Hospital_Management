@@ -2,7 +2,7 @@ package com.example.hospital_management.controller;
 
 import com.example.hospital_management.model.PatientDetails;
 import com.example.hospital_management.service.PatientService;
-import com.example.hospital_management.service.PatientServiceImpl;
+import com.example.hospital_management.serviceImpl.PatientServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,13 +1,14 @@
-package com.example.hospital_management.service;
+package com.example.hospital_management.serviceImpl;
 
 import com.example.hospital_management.dao.DoctorDetailDao;
 import com.example.hospital_management.model.DoctorDetails;
+import com.example.hospital_management.service.DoctorDetailService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DoctorDetailServiceImpl implements DoctorDetailService{
+public class DoctorDetailServiceImpl implements DoctorDetailService {
 
     private final DoctorDetailDao doctorDetailDao;
 

@@ -1,7 +1,8 @@
-package com.example.hospital_management.service;
+package com.example.hospital_management.serviceImpl;
 
 import com.example.hospital_management.dao.AddressDao;
 import com.example.hospital_management.model.Address;
+import com.example.hospital_management.service.AddressService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
