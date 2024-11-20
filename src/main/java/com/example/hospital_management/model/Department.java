@@ -1,5 +1,9 @@
 package com.example.hospital_management.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -14,15 +18,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
-public class Department {
+public class Department implements Serializable{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4557312965618497662L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long departmentId;
     private String name;

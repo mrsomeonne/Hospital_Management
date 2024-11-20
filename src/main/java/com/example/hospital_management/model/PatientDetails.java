@@ -1,21 +1,38 @@
 package com.example.hospital_management.model;
 
-import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import lombok.*;
-
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 public class PatientDetails implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 892401847933925552L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
     private String firstName;
