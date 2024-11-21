@@ -13,7 +13,6 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
-
 public class MedicalReport implements Serializable {
 
     /**
@@ -26,9 +25,10 @@ public class MedicalReport implements Serializable {
     private Long medicalReportId;
     private String prescription;
     private Date createdDate;
-    private String Diagnosis;
+    private String diagnosis;
     private String doctorNotes;
 
+    
     @OneToOne
     @JoinColumn(name = "appointmentId")
     private Appointment appointment;

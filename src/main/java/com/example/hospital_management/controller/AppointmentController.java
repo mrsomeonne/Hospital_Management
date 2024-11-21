@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 public class AppointmentController {
-
+	
     private final AppointmentService appointmentService;
 
     public AppointmentController(AppointmentService appointmentService) {
@@ -40,5 +40,4 @@ public class AppointmentController {
                     .body("Failed To Add Details. Check Input And Try Again!");
         }
     }
-
 }

@@ -17,7 +17,6 @@ public interface PatientService{
 
     void updatePatientDetail(PatientDetails patientDetails);
 
-    void deletePatientDetails(PatientDetails patientDetails);
-
+    void deletePatientDetails(Long patientId);
 
 }

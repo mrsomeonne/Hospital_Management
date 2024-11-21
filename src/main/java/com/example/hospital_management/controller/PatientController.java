@@ -4,6 +4,7 @@ import com.example.hospital_management.model.PatientDetails;
 import com.example.hospital_management.service.PatientService;
 import com.example.hospital_management.serviceImpl.PatientServiceImpl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,17 @@ public class PatientController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed To Add Details. Check Input And Try Again!");
         }
+    }
+    
+    @DeleteMapping("hospital/patient/delete/{patientId}")
+    public ResponseEntity<String> deletePatient(@PathVariable Long patientId){
+    	try {
+    	patientService.deletePatientDetails(patientId);
+    	return ResponseEntity.status(HttpStatus.OK).body("Patient Detail Deleted Successfully!");
+    	}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Failed To Delete Patient Details!");
+		}
+    	
     }
 }
