@@ -58,6 +58,15 @@ public class MedicalReportController {
     	}
     }
 	
+	@GetMapping("patient/{patientId}/get")
+	public ResponseEntity<List<MedicalReport>> getReportByPatient(@PathVariable Long patientId){
+		List<MedicalReport> medicalReport = medicalReportService.getReportByPatientId(patientId);
+		if (medicalReport.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medicalReport); 
+	}
+	
 	// TODO: Get Report By Patient
 	
 }

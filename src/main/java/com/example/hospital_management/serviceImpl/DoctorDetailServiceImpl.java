@@ -30,4 +30,9 @@ public class DoctorDetailServiceImpl implements DoctorDetailService {
 	public void deleteDoctorDetails(Long doctorId) {
 		doctorDetailDao.deleteById(doctorId);
 	}
+
+	@Override
+	public List<DoctorDetails> findDoctorByDepartmentId(Long departmentId) {
+		return doctorDetailDao.findByDepartmentDepartmentId(departmentId);
+	}
 }

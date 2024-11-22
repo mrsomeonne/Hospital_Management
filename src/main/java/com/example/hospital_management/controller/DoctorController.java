@@ -57,6 +57,15 @@ public class DoctorController {
     	}
     }
 
+    @GetMapping("department/{departmentId}/get")
+    public ResponseEntity<List<DoctorDetails>> getDoctorByDepartment(@PathVariable Long departmentId){
+    	List<DoctorDetails> doctorDetails = doctorService.findDoctorByDepartmentId(departmentId);
+    	if (doctorDetails.isEmpty()) {
+    		return ResponseEntity.notFound().build();
+    	}
+    	return ResponseEntity.ok(doctorDetails);
+    }
+    
     // TODO: Get Doctor By Department
     
 }

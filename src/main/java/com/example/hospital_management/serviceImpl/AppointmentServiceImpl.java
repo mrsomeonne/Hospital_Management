@@ -30,4 +30,14 @@ public class AppointmentServiceImpl implements AppointmentService {
 	public void deleteAppointment(Long appointmentId) {
 		appointmentDao.deleteById(appointmentId);
 	}
+
+	@Override
+	public List<Appointment> findAppointmetByPatientId(Long patientId) {
+		return appointmentDao.findByPatientDetailsPatientId(patientId);
+	}
+
+	@Override
+	public List<Appointment> findAppointmetByDoctorId(Long doctorId) {
+		return appointmentDao.findByDoctorDetailsDoctorId(doctorId);
+	}
 }

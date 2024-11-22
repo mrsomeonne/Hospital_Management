@@ -11,5 +11,10 @@ public interface AppointmentService {
     void addNewAppointment(Appointment appointment);
 
     void deleteAppointment(Long appointmentId);
+    
+    List<Appointment> findAppointmetByPatientId(Long patientId);
+    
+    List<Appointment> findAppointmetByDoctorId(Long doctorId);
+
 
 }

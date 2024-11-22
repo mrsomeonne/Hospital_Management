@@ -56,7 +56,24 @@ public class AppointmentController {
 		}
 	}
 
-	// TODO: Get Appointment By Patient
-	// :Get Appointment By Doctor
+	@GetMapping("/patient/{patientId}/get")
+	public ResponseEntity<List<Appointment>> getAppointmentByPatient(@PathVariable Long patientId) {
+		List<Appointment> appointments = appointmentService.findAppointmetByPatientId(patientId);
+		if (appointments.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(appointments);
+	}
+
+	@GetMapping("/doctor/{doctorId}/get")
+	public ResponseEntity<List<Appointment>> getAppointmentByDoctor(@PathVariable Long doctorId){
+		List<Appointment> appointments = appointmentService.findAppointmetByDoctorId(doctorId);
+		if (appointments.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(appointments);
+	}
+
+	// TODO: Update and getById
 
 }

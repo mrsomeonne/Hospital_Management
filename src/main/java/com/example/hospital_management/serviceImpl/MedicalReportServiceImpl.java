@@ -32,5 +32,10 @@ public class MedicalReportServiceImpl implements MedicalReportService{
 	public void deleteMedicalReport(Long medicalReportId) {
 		medicalReportDao.deleteById(medicalReportId);
 	}
+
+	@Override
+	public List<MedicalReport> getReportByPatientId(Long patientId) {
+		return medicalReportDao.findByAppointmentPatientDetailsPatientId(patientId);
+	}
 	
 }
