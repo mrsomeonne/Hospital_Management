@@ -9,5 +9,7 @@ public interface DepartmentService {
     List<Department> findAllDepartment();
 
     void addDepartment(Department department);
+    
+    void deleteDepartment(Long departmentId);
 
 }

@@ -25,4 +25,9 @@ public class AddressServiceImpl implements AddressService {
     public void addAddress(Address address) {
         addressDao.save(address);
     }
+
+	@Override
+	public void deleteAddress(Long addressId) {
+		addressDao.deleteById(addressId);
+	}
 }

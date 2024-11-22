@@ -26,4 +26,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void addDepartment(Department department) {
         departmentDao.save(department);
     }
+
+	@Override
+	public void deleteDepartment(Long departmentId) {
+		departmentDao.deleteById(departmentId);
+	}
 }

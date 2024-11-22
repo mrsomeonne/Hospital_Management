@@ -4,24 +4,23 @@ import com.example.hospital_management.model.PatientDetails;
 import com.example.hospital_management.service.PatientService;
 import com.example.hospital_management.serviceImpl.PatientServiceImpl;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/hospital/patient")
 public class PatientController {
 
     private final PatientService patientService;
     
 
     public PatientController(PatientServiceImpl patientService) {
-		super();
 		this.patientService = patientService;
 	}
 
-	@GetMapping("hospital/patient/get")
+	@GetMapping("/get")
     public ResponseEntity<List<PatientDetails>> getPatientDetails(){
         List<PatientDetails> patientDetails = patientService.getPatientDetails();
         if (patientDetails.isEmpty()){
@@ -31,7 +30,7 @@ public class PatientController {
 
     }
 
-    @PostMapping("hospital/patient/add")
+    @PostMapping("/add")
     public ResponseEntity<String> savePatient(@RequestBody PatientDetails patientDetails){
         try {
             patientService.addPatientDetail(patientDetails);
@@ -42,7 +41,7 @@ public class PatientController {
         }
     }
     
-    @DeleteMapping("hospital/patient/delete/{patientId}")
+    @DeleteMapping("/{patientId}/delete")
     public ResponseEntity<String> deletePatient(@PathVariable Long patientId){
     	try {
     	patientService.deletePatientDetails(patientId);
@@ -50,7 +49,8 @@ public class PatientController {
     	}catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body("Failed To Delete Patient Details!");
-		}
-    	
+		}	
     }
+
+    
 }

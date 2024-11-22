@@ -25,4 +25,9 @@ public class DoctorDetailServiceImpl implements DoctorDetailService {
     public void addDoctorDetails(DoctorDetails doctorDetails) {
         doctorDetailDao.save(doctorDetails);
     }
+
+	@Override
+	public void deleteDoctorDetails(Long doctorId) {
+		doctorDetailDao.deleteById(doctorId);
+	}
 }

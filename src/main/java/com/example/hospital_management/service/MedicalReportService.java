@@ -10,4 +10,5 @@ public interface MedicalReportService {
 	
 	void addNewMedicalReport(MedicalReport medicalReport);
 	
+	void deleteMedicalReport(Long medicalReportId);
 }

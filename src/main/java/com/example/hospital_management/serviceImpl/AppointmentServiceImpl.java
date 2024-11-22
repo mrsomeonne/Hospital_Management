@@ -25,4 +25,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void addNewAppointment(Appointment appointment) {
         appointmentDao.save(appointment);
     }
+
+	@Override
+	public void deleteAppointment(Long appointmentId) {
+		appointmentDao.deleteById(appointmentId);
+	}
 }

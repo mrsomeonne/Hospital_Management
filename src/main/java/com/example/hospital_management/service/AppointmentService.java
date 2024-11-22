@@ -10,5 +10,6 @@ public interface AppointmentService {
 
     void addNewAppointment(Appointment appointment);
 
+    void deleteAppointment(Long appointmentId);
 
 }

@@ -4,14 +4,18 @@ import com.example.hospital_management.model.Address;
 import com.example.hospital_management.service.AddressService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/hospital/patient/address")
 public class AddressController {
 
     private final AddressService addressService;
@@ -20,7 +24,7 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping("Hospital/patient/address/get")
+    @GetMapping("/get")
 
     public ResponseEntity<List<Address>> getAddress(){
        List<Address> addresses = addressService.getAllAddress();
@@ -30,7 +34,7 @@ public class AddressController {
        return ResponseEntity.ok(addresses);
     }
 
-    @PostMapping("hospital/patient/address/post")
+    @PostMapping("/add")
     public ResponseEntity<String> addAddress(@RequestBody Address address){
 
         try {
@@ -42,5 +46,15 @@ public class AddressController {
                     .body("Failed To Add Details. Check Input And Try Again!");
         }
     }
-
+    
+    @DeleteMapping("/{addressId}/delete")
+    public ResponseEntity<String> deleteAddress(@PathVariable Long addressId){
+    	try {
+    		addressService.deleteAddress(addressId);
+    		return ResponseEntity.status(HttpStatus.OK).body("Address Deleted Successfully!");
+    	}catch (Exception e) {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed To Delete Address!");
+    	}
+    }
+    
 }

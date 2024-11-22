@@ -10,6 +10,6 @@ public interface DoctorDetailService {
 
     void addDoctorDetails(DoctorDetails doctorDetails);
 
-
+    void deleteDoctorDetails(Long doctorId);
 
 }

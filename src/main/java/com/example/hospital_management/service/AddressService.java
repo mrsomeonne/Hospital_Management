@@ -9,5 +9,7 @@ public interface AddressService {
     List<Address> getAllAddress();
 
     void addAddress(Address address);
+    
+    void deleteAddress(Long addressId);
 
 }

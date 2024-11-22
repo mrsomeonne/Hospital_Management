@@ -27,5 +27,10 @@ public class MedicalReportServiceImpl implements MedicalReportService{
 	public void addNewMedicalReport(MedicalReport medicalReport) {
 		medicalReportDao.save(medicalReport);
 	}
+
+	@Override
+	public void deleteMedicalReport(Long medicalReportId) {
+		medicalReportDao.deleteById(medicalReportId);
+	}
 	
 }
