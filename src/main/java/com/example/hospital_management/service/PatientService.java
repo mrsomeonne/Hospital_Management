@@ -9,7 +9,7 @@ public interface PatientService{
 
     List<PatientDetails> getPatientDetails();
 
-    void addPatientDetail (PatientDetails patientDetails);
+    void addPatientDetail (List<PatientDetails> patientDetails);
 
     PatientDetails getPatientDetailById(Long id);
 

@@ -25,8 +25,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void addPatientDetail(PatientDetails patientDetails) {
-        patientDetailDao.save(patientDetails);
+    public void addPatientDetail(List<PatientDetails> patientDetails) {
+        patientDetailDao.saveAll(patientDetails);
     }
 
     @Override

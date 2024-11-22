@@ -34,7 +34,7 @@ public class DepartmentController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<String> addDepartment(@RequestBody Department department) {
+	public ResponseEntity<String> addDepartment(@RequestBody List<Department> department) {
 		try {
 			departmentService.addDepartment(department);
 			return ResponseEntity.status(HttpStatus.CREATED).body("Department Added Successfully!");

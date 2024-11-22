@@ -31,7 +31,7 @@ public class PatientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> savePatient(@RequestBody PatientDetails patientDetails){
+    public ResponseEntity<String> savePatient(@RequestBody List<PatientDetails> patientDetails){
         try {
             patientService.addPatientDetail(patientDetails);
             return ResponseEntity.status(HttpStatus.CREATED).body("Patient Details Added Successfully!");

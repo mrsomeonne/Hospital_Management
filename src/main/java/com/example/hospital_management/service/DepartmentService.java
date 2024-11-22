@@ -8,7 +8,7 @@ public interface DepartmentService {
 
     List<Department> findAllDepartment();
 
-    void addDepartment(Department department);
+    void addDepartment(List<Department> department);
     
     void deleteDepartment(Long departmentId);
 
