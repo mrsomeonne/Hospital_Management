@@ -11,11 +11,9 @@ public interface PatientService{
 
     void addPatientDetail (List<PatientDetails> patientDetails);
 
-    PatientDetails getPatientDetailById(Long id);
+    PatientDetails getPatientDetailById(Long patientId);
 
-    List<PatientDetails> getPatientDetailByName(String name);
-
-    void updatePatientDetail(PatientDetails patientDetails);
+    PatientDetails updatePatientDetail(Long paitentId, PatientDetails patientDetails);
 
     void deletePatientDetails(Long patientId);
 

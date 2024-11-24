@@ -52,5 +52,24 @@ public class PatientController {
 		}	
     }
 
+    @GetMapping("/{patientId}/get")
+    public ResponseEntity<PatientDetails> getPatientById(@PathVariable Long patientId) {
+    	try {
+    	PatientDetails getPatient = patientService.getPatientDetailById(patientId);
+    	return ResponseEntity.ok(getPatient);
+    	}catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+    }
+    
+    @PutMapping("/{patientId}/update")
+    public ResponseEntity<PatientDetails> updatePatientById(@PathVariable Long patientId, @RequestBody PatientDetails patientDetails) {
+		try {
+    	PatientDetails patientUpadate = patientService.updatePatientDetail(patientId, patientDetails);
+    	return ResponseEntity.ok(patientUpadate);
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+    }
     
 }

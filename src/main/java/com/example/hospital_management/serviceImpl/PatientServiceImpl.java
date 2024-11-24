@@ -1,11 +1,14 @@
 package com.example.hospital_management.serviceImpl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.example.hospital_management.dao.PatientDetailDao;
 import com.example.hospital_management.model.PatientDetails;
-
 import com.example.hospital_management.service.PatientService;
-import org.springframework.stereotype.Service;
-import java.util.List;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -30,18 +33,30 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDetails getPatientDetailById(Long id) {
-        return null;
+    public PatientDetails getPatientDetailById(Long patientId) {
+        return patientDetailDao.findById(patientId).get();
     }
 
-    @Override
-    public List<PatientDetails> getPatientDetailByName(String name) {
-        return List.of();
-    }
 
     @Override
-    public void updatePatientDetail(PatientDetails patientDetails) {
-
+    public PatientDetails updatePatientDetail(Long patientId, PatientDetails patientDetails) {
+    	
+    	PatientDetails exists = patientDetailDao.findById(patientId)
+    			.orElse(null);
+    	
+    	if (exists == null) {
+    		throw new EntityNotFoundException("Patient With Id: "+ patientId + " Not Found!");
+    	}
+    	
+    	exists.setFirstName(patientDetails.getFirstName());
+    	exists.setLastName(patientDetails.getLastName());
+    	exists.setEmail(patientDetails.getEmail());
+    	exists.setGender(patientDetails.getGender());
+    	exists.setDateOfBirth(patientDetails.getDateOfBirth());
+    	exists.setAddress(patientDetails.getAddress());
+    	//exists.setAppointments(patientDetails.getAppointments());
+    	
+    	return patientDetailDao.save(exists);
     }
 
     @Override
