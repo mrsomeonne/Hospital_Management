@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,7 +67,7 @@ public class AppointmentController {
 	}
 
 	@GetMapping("/doctor/{doctorId}/get")
-	public ResponseEntity<List<Appointment>> getAppointmentByDoctor(@PathVariable Long doctorId){
+	public ResponseEntity<List<Appointment>> getAppointmentByDoctor(@PathVariable Long doctorId) {
 		List<Appointment> appointments = appointmentService.findAppointmetByDoctorId(doctorId);
 		if (appointments.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -74,6 +75,24 @@ public class AppointmentController {
 		return ResponseEntity.ok(appointments);
 	}
 
-	// TODO: Update and getById
+	@GetMapping("/{appointmentId}/get")
+	public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long appointmentId) {
+		try {
+			Appointment getAppointment = appointmentService.getAppointmentById(appointmentId);
+			return ResponseEntity.ok(getAppointment);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 
+	@PutMapping("/{appointmentId}/update")
+	public ResponseEntity<Appointment> updateAppointment(@PathVariable Long appointmentId,
+			@RequestBody Appointment appointment) {
+		try {
+			Appointment appointmentUpdate = appointmentService.updateAppointment(appointmentId, appointment);
+			return ResponseEntity.ok(appointmentUpdate);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 }
