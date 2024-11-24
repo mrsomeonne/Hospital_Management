@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,5 +54,27 @@ public class DepartmentController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed To Delete Department!");
 		}
 	}
+	
+	@GetMapping("/{departmentId}/get")
+	public ResponseEntity<Department> getDepartmentById(@PathVariable Long departmentId){
+		try {
+			Department getDepartment = departmentService.getDepartmentById(departmentId);
+			return ResponseEntity.ok(getDepartment);
+		}catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+    @PutMapping("/{departmentId}/update")
+    public ResponseEntity<Department> updateDepartmentById(@PathVariable Long departmentId, @RequestBody Department department) {
+		try {
+    	Department departmentUpadate = departmentService.updateDepartment(departmentId, department);
+    	return ResponseEntity.ok(departmentUpadate);
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+    }
+	
+	
 
 }
