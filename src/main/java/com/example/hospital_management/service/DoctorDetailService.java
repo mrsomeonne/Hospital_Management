@@ -13,5 +13,9 @@ public interface DoctorDetailService {
     void deleteDoctorDetails(Long doctorId);
     
     List<DoctorDetails> findDoctorByDepartmentId(Long departmentId);
+    
+    DoctorDetails findDoctorById(Long doctorId);
+    
+    DoctorDetails updateDoctorDetails(Long doctorId, DoctorDetails doctorDetails);
 
 }
