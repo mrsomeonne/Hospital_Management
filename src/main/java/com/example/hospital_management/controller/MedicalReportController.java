@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.hospital_management.model.MedicalReport;
 import com.example.hospital_management.service.MedicalReportService;
+
 
 @RestController
 @RequestMapping("/hospital/report")
@@ -47,10 +49,10 @@ public class MedicalReportController {
 		}
 	}
 	
-	@DeleteMapping("/{reportId}/delete")
-    public ResponseEntity<String> deleteReport(@PathVariable Long reportId){
+	@DeleteMapping("/{medicalReportId}/delete")
+    public ResponseEntity<String> deleteReport(@PathVariable Long medicalReportId){
     	try {
-    		medicalReportService.deleteMedicalReport(reportId);
+    		medicalReportService.deleteMedicalReport(medicalReportId);
     		return ResponseEntity.status(HttpStatus.OK).body("Medical Report Deleted Successfully!");
     	}catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -67,6 +69,24 @@ public class MedicalReportController {
 		return ResponseEntity.ok(medicalReport); 
 	}
 	
-	// TODO: Get Report By Patient
+	@GetMapping("{medicalReportId}/get")
+	public ResponseEntity<MedicalReport> gerReportById(@PathVariable Long medicalReportId) {
+		try {
+			MedicalReport getReport = medicalReportService.getReportById(medicalReportId);
+			return ResponseEntity.ok(getReport);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@PutMapping("/{medicalReportId}/update")
+	public ResponseEntity<MedicalReport> updateReport(@PathVariable Long medicalReportId, @RequestBody MedicalReport medicalReport) {
+		try {
+			MedicalReport reportUpdate = medicalReportService.updateMedicalReport(medicalReportId, medicalReport);
+			return ResponseEntity.ok(reportUpdate);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 	
 }

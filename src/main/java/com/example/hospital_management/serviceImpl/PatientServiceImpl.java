@@ -54,7 +54,7 @@ public class PatientServiceImpl implements PatientService {
     	exists.setGender(patientDetails.getGender());
     	exists.setDateOfBirth(patientDetails.getDateOfBirth());
     	exists.setAddress(patientDetails.getAddress());
-    	//exists.setAppointments(patientDetails.getAppointments());
+    	exists.setAppointments(patientDetails.getAppointments());
     	
     	return patientDetailDao.save(exists);
     }

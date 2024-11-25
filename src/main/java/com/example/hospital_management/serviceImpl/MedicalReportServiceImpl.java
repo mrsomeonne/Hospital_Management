@@ -8,6 +8,8 @@ import com.example.hospital_management.dao.MedicalReportDao;
 import com.example.hospital_management.model.MedicalReport;
 import com.example.hospital_management.service.MedicalReportService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class MedicalReportServiceImpl implements MedicalReportService{
 	
@@ -36,6 +38,28 @@ public class MedicalReportServiceImpl implements MedicalReportService{
 	@Override
 	public List<MedicalReport> getReportByPatientId(Long patientId) {
 		return medicalReportDao.findByAppointmentPatientDetailsPatientId(patientId);
+	}
+
+	@Override
+	public MedicalReport getReportById(Long medicalReportId) {
+		return medicalReportDao.findById(medicalReportId).get();
+	}
+
+	@Override
+	public MedicalReport updateMedicalReport(Long medicalReportId, MedicalReport medicalReport) {
+		
+		MedicalReport exists = medicalReportDao.findById(medicalReportId).orElse(null);
+		
+		if (exists == null) {
+			throw new EntityNotFoundException();
+		}
+		
+		exists.setPrescription(medicalReport.getPrescription());
+		exists.setCreatedDate(medicalReport.getCreatedDate());
+		exists.setDiagnosis(medicalReport.getDiagnosis());
+		exists.setDoctorNotes(medicalReport.getDoctorNotes());
+		exists.setAppointment(medicalReport.getAppointment());
+		return medicalReportDao.save(exists);
 	}
 	
 }

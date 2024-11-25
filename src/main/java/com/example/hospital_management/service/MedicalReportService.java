@@ -13,4 +13,9 @@ public interface MedicalReportService {
 	void deleteMedicalReport(Long medicalReportId);
 	
 	List<MedicalReport> getReportByPatientId(Long patientId);
+	
+	MedicalReport getReportById(Long medicalReportId);
+	
+	MedicalReport updateMedicalReport(Long medicalReportId, MedicalReport medicalReport);
+	
 }

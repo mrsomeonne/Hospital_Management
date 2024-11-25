@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +56,27 @@ public class AddressController {
     	}catch (Exception e) {
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed To Delete Address!");
     	}
+    }
+    
+    @GetMapping("/{addressId}/get")
+    public ResponseEntity<Address> getAddressById(@PathVariable Long addressId){
+    	try {
+			Address getAddress = addressService.getAddressById(addressId);
+			return ResponseEntity.ok(getAddress);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+    }
+    
+    @PutMapping("{addressId}/update")
+    public ResponseEntity<Address> updateAddress(@PathVariable Long addressId, @RequestBody Address address){
+    	try {
+			Address addressUpdate = addressService.updateAddress(addressId, address);
+			return ResponseEntity.ok(addressUpdate);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+    	
     }
     
 }
