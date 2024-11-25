@@ -47,7 +47,7 @@ public class PatientDetails implements Serializable {
     private Address address;
 
 
-    @OneToMany(mappedBy = "patientDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "patientDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Appointment> appointments;
 

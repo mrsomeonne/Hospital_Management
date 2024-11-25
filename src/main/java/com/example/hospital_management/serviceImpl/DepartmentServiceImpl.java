@@ -32,6 +32,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public void deleteDepartment(Long departmentId) {
+		Department exists = departmentDao.findById(departmentId).orElse(null);
+		if (exists == null) {
+			throw new EntityNotFoundException()
+;		}
 		departmentDao.deleteById(departmentId);
 	}
 

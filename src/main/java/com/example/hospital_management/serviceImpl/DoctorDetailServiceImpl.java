@@ -31,6 +31,10 @@ public class DoctorDetailServiceImpl implements DoctorDetailService {
 
 	@Override
 	public void deleteDoctorDetails(Long doctorId) {
+		DoctorDetails exists = doctorDetailDao.findById(doctorId).orElse(null);
+		if (exists == null) {
+			throw new EntityNotFoundException();
+		}
 		doctorDetailDao.deleteById(doctorId);
 	}
 

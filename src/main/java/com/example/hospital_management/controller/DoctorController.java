@@ -54,7 +54,7 @@ public class DoctorController {
     		return ResponseEntity.status(HttpStatus.OK).body("Doctor Details Deleted Successfully!");
     	}catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("Failed To Add Details. Check Input And Try Again!");
+					.body("Failed To Delete Doctor Details!");
     	}
     }
 

@@ -31,6 +31,10 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 	@Override
 	public void deleteAppointment(Long appointmentId) {
+		Appointment exists = appointmentDao.findById(appointmentId).orElse(null);
+		if (exists == null) {
+			throw new EntityNotFoundException();
+		}
 		appointmentDao.deleteById(appointmentId);
 	}
 

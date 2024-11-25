@@ -49,7 +49,7 @@ public class DoctorDetails implements Serializable {
     private Department department;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "doctorDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "doctorDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Appointment> appointments;
 
 }

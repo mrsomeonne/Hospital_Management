@@ -31,6 +31,10 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public void deleteAddress(Long addressId) {
+		Address exists = addressDao.findById(addressId).orElse(null);
+		if (exists == null) {
+			throw new EntityNotFoundException()
+;		}
 		addressDao.deleteById(addressId);
 	}
 

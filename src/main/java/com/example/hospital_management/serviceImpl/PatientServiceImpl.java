@@ -1,6 +1,7 @@
 package com.example.hospital_management.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -61,6 +62,13 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void deletePatientDetails(Long patientId) {
+    	
+    	Optional<PatientDetails> exists = patientDetailDao.findById(patientId);
+    	
+    	if (exists.isEmpty()) {
+			throw new EntityNotFoundException();
+		}
+    	
     	patientDetailDao.deleteById(patientId);
     }
 }

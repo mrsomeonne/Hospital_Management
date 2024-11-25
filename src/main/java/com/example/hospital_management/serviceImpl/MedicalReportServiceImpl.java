@@ -32,6 +32,10 @@ public class MedicalReportServiceImpl implements MedicalReportService{
 
 	@Override
 	public void deleteMedicalReport(Long medicalReportId) {
+		MedicalReport exists = medicalReportDao.findById(medicalReportId).orElse(null);
+		if (exists == null) {
+			throw new EntityNotFoundException()
+;		}
 		medicalReportDao.deleteById(medicalReportId);
 	}
 
